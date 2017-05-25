@@ -1,5 +1,5 @@
 # Om Mani Padme Hum !
-# Acquire GPS coordinates and time information in Jinan measurement on May kth 2017
+# Acquire GPS coordinates and time information during the city measurement on May kth 2017
 # 2017-03-12, 1st built, Weihua Wang
 # mon and dy are the specific month and day, respectively. 
 
@@ -8,7 +8,7 @@ acquireCoor <- function(mon,dy) {
   source("./dirpath.R")  # Invoke a user-defined R function 
 
   dirpath <- dirpath(mon,dy,"gps")
-  filepath <- paste(dirpath, "log.txt", sep = "") # Generate the GPS log file path
+  filepath <- paste(dirpath, "GPSInfo.txt", sep = "") # Generate the GPS log file path
   options(digits=9)      # Keep digits precision
   
   datRaw = read.table(filepath)
@@ -17,7 +17,7 @@ acquireCoor <- function(mon,dy) {
   daytime <- datRaw[,9]  # extract the day time  
   
   # Read GPS log.txt file
-  # A priori coordinate of Jinan city is approximately at c(36.6512 Lat,117.1201 Lon) thus outliers are outside of a small range around this coordinates.
+  # A priori coordinate of the city is approximately at c(36.6512 Lat,117.1201 Lon) thus outliers are outside of a small range around this coordinates.
   # Why outliers? Because malfunction of the GPS tracker at certain time can record abnormal coordinate pairs! 
   LAT=36.6512; LON=117.1201; offset=3
   if ( min(posLon)<LON-offset | max(posLon)>LON+offset | min(posLat)<LAT-offset | max(posLat)>LAT+offset ){
