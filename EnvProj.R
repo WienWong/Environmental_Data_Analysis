@@ -7,7 +7,7 @@ library(gridExtra)                                           # Plot sub-images t
 getwd()                                                      # Check the default working directory
 datRaw = read.table("/PATH_TO_THE_TARGET_FILE/datNew.txt")   # Generate the log file path
 options(digits=9)                                            # Keep digits precision
-names(datRaw) <- c("Latitude", "Longitude")                  # Rename the observation variables
+names(datRaw) <- c("Latitude","Longitude","NO2","SO2","Wind")# Rename the observation variables
 
 source("./centercal.R")                                      # Invoke a user-defined function 'centercal.R'
 center <- centercal(datRaw$Latitude, datRaw$Longitude)
@@ -21,7 +21,7 @@ title <- "NO2 and SO2 concentration along the driving route"
 
 mp + 
   geom_point(data=datRaw, aes(x=Longitude, y=Latitude), colour='red') + 
-  ggtitle(title)                                             # Driving route plot
+  ggtitle("Driving route")                                   # Driving route plot
 
 windir = mean(datRaw$Wind)                                   # Mean wind direction in degree
 latend = windArrow(windir)[1]; lonend = windArrow(windir)[2] # The ending coor. pairs for wind arrow                 
