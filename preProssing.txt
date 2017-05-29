@@ -1,0 +1,5 @@
+Remove 'X:' and 'Y:' in the original txt file. Use the sed command
+wien@wien-Aspire-S3:~/Octave/EnvProj$ sed 's/[X:Y:]//g' GPSInfo.txt 
+
+Save all the terminal outputs to a new txt file named 'dat.txt'. Redirection command > output.txt
+wien@wien-Aspire-S3:~/Octave/EnvProj$ sed 's/[X:Y:]//g' GPSInfo.txt > dat.txt
